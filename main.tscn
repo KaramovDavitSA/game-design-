@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://d7amxyoka8y4"]
+
+[ext_resource type="Texture2D" uid="uid://bvbpm1d0u5ryw" path="res://bigbentham.jpeg" id="1_8gcgb"]
+[ext_resource type="Script" path="res://main.gd" id="1_pm2yp"]
+[ext_resource type="PackedScene" uid="uid://c8cejl7dyanxb" path="res://player.tscn" id="3_4optv"]
+[ext_resource type="AudioStream" uid="uid://dn7btb7mx6feb" path="res://bgmusic.mp3" id="4_n0kw3"]
+
+[sub_resource type="Animation" id="Animation_e0ijm"]
+resource_name = "ship"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nrhjb"]
+_data = {
+"ship": SubResource("Animation_e0ijm")
+}
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_pm2yp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -10
+scale = Vector2(0.940711, 1.61307)
+texture = ExtResource("1_8gcgb")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nrhjb")
+}
+
+[node name="Player" parent="." instance=ExtResource("3_4optv")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_n0kw3")
+volume_db = 15.0
+autoplay = true

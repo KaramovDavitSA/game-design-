@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://l1l6iwii3yxq"]
+
+[ext_resource type="Script" path="res://bentham_sprite.gd" id="2_2a3ye"]
+[ext_resource type="Texture2D" uid="uid://bugwhl38cnowm" path="res://benthamsprite.png" id="2_2tu12"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q08nv"]
+size = Vector2(509.091, 385.946)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b73t5"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"forward",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("2_2a3ye")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 3.8147e-06)
+scale = Vector2(0.275, 0.264286)
+texture = ExtResource("2_2tu12")
+hframes = 3
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.275, 0.264286)
+shape = SubResource("RectangleShape2D_q08nv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_b73t5")
+animation = &"forward"

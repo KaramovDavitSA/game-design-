@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca12g1ojeelv7"]
+
+[ext_resource type="Script" path="res://bullet.gd" id="1_a6l2b"]
+[ext_resource type="Texture2D" uid="uid://b4iprcjehba7e" path="res://swans.png" id="2_n47yc"]
+[ext_resource type="AudioStream" uid="uid://r54qnih7okrq" path="res://duckquack.mp3" id="3_otp3k"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rm4u7"]
+radius = 6.0
+height = 12.0
+
+[node name="Bullet" type="Area2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_a6l2b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, 4.76837e-07)
+scale = Vector2(0.00540002, 0.0066)
+texture = ExtResource("2_n47yc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_rm4u7")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_otp3k")
+autoplay = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
